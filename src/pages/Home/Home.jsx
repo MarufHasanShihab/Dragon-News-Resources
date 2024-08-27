@@ -6,7 +6,7 @@ import RightNav from "../../components/RightNav/RightNav";
 
 const Home = () => {
     return (
-        <div>
+        <div className="px-6">
             <Header/>
             <BreakingNews/>
             <Navbar/>

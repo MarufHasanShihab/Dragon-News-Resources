@@ -69,8 +69,8 @@ const RightNav = () => {
             <img src={qZone3}/>
       </div>
       {/* right footer */}
-      <div className="relative">
-        <img src={bg} alt="" />
+      <div className="relative w-full mx-auto">
+        <img src={bg} className="rounded-md" />
         <div className="absolute top-14">
             <h2 className="text-3xl text-white text-center leading-[45px] font-bold">Create an Amazing Newspaper</h2>
             <p className="text-white text-center w-[200px] mx-auto py-6 text-base font-normal leading-relaxed">Discover thousands of options, easy to customize layouts, one-click to import demo and much more.</p>
