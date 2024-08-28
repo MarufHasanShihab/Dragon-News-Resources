@@ -6,24 +6,29 @@ import auth from "../../firebase/firebase";
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState({})
+    const [loading, setLoading] = useState(true) 
     // login with google
     const googleLogin = ()=>{
+        setLoading(true)
         const googleProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleProvider)
     }
 
     // user create with email and password
     const userCreate = (email, password) =>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     // user sign in with email and password
     const userSignIn = (email, password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     // log out 
     const logout = ()=>{
+        setLoading(true)
         return signOut(auth)
     }
 
@@ -34,6 +39,7 @@ const AuthProvider = ({children}) => {
             if(currentUser){
                 setUser(currentUser)
             }
+            setLoading(false)
         })
         return()=>{
             unSubcribe()
@@ -47,7 +53,8 @@ const AuthProvider = ({children}) => {
         userSignIn,
         user,
         setUser,
-        logout
+        logout,
+        loading
     }
     return (
         <AuthContext.Provider value={Authentications}>

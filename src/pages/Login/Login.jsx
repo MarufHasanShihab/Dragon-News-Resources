@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 const Login = () => {
   const {userSignIn} = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
   const login = e =>{
     e.preventDefault();
     const email = e.target.email.value;
@@ -13,7 +14,7 @@ const Login = () => {
     userSignIn(email, password)
     .then(()=>{
       toast.success("user login successfully!")
-      navigate("/")
+      navigate(location?.state ? location.state : "/")
     })
     .catch(error => toast.error(error.message))
   }

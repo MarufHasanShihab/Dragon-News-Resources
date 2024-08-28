@@ -16,7 +16,7 @@ const ReadMoreDetails = () => {
         setSingleNews(findNews)
     },[news,id])
     return (
-        <div className="px-6">
+        <div className="px-6 py-8">
             <Header/>
             <h3 className="text-xl py-4 text-[#403f3f] font-semibold">Dragon News</h3>
             {/* new details */}

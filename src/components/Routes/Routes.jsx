@@ -4,6 +4,7 @@ import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import ReadMoreDetails from "../../pages/ReadMoreDetails/ReadMoreDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -24,7 +25,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/newDetails/:id",
-                element: <ReadMoreDetails/>
+                element: <PrivateRoutes><ReadMoreDetails/></PrivateRoutes>
             }
         ]
     }
