@@ -5,7 +5,7 @@ import { IoMdShare } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const NewsCard = ({news}) => {
-    const {id, title, author, image_url, details, rating, total_view} = news || {};
+    const {_id, title, author, image_url, details, rating, total_view} = news || {};
     return (
         <div className="bg-white shadow-xl p-4">
             <div>
@@ -26,7 +26,7 @@ const NewsCard = ({news}) => {
             {/* details */}
             <div className="py-4 text-base font-normal text-[#706f6f] leading-relaxed">
                 {
-                    details.length > 200 ? <p>{details.slice(0,200)}<Link to={`/readMoreDetails/${id}`} className="text-[#ff8c47] font-bold"> Read more.....</Link></p> : <p>{details}</p>
+                    details.length > 200 ? <p>{details.slice(0,200)}<Link to={`/newDetails/${_id}`} className="text-[#ff8c47] font-bold"> Read more.....</Link></p> : <p>{details}</p>
                 }
             </div>
             {/* rating and view */}

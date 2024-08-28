@@ -23,7 +23,7 @@ const routes = createBrowserRouter([
                 element: <Register/>
             },
             {
-                path: "/readMoreDetails/:id",
+                path: "/newDetails/:id",
                 element: <ReadMoreDetails/>
             }
         ]

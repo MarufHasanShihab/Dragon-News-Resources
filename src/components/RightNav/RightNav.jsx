@@ -4,9 +4,10 @@ import qZone2 from "../../assets/qZone2.png"
 import qZone3 from "../../assets/qZone3.png"
 import bg from "../../assets/bg.png"
 import useAuth from "../../hooks/useAuth";
+import PropTypes from "prop-types"
 
 /* eslint-disable react/no-unknown-property */
-const RightNav = () => {
+const RightNav = ({show}) => {
   const {googleLogin} = useAuth()
   // social login
   const socialLogin = (media)=>{
@@ -81,7 +82,7 @@ const RightNav = () => {
             <img src={qZone3}/>
       </div>
       {/* right footer */}
-      <div className="relative w-full mx-auto">
+      {show && <div className="relative w-full mx-auto">
         <img src={bg} className="rounded-md" />
         <div className="absolute top-14">
             <h2 className="text-3xl text-white text-center leading-[45px] font-bold">Create an Amazing Newspaper</h2>
@@ -90,9 +91,13 @@ const RightNav = () => {
             <button className="py-1 px-4  bg-[#d72050] rounded-sm text-white font-medium leading-[30px]">Learn More</button>
             </div>
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
+
+RightNav.propTypes = {
+  show : PropTypes.string
+}
 
 export default RightNav;
