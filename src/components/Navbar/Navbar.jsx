@@ -5,10 +5,13 @@ import toast from "react-hot-toast";
 
 
 const Navbar = () => {
-    const {user, logout} = useAuth()
+    const {user, logout, setUser} = useAuth()
     const signOut = ()=> {
         logout()
-        .then(() => toast.success("You have signed out"))
+        .then(() => {
+            toast.success("You have signed out")
+            setUser({})
+        })
         .catch((err => toast.error(err.message)))
     }
     return (

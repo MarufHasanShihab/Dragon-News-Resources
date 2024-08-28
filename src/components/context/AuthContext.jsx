@@ -30,11 +30,14 @@ const AuthProvider = ({children}) => {
 
     // on auth state change
     useEffect(()=>{
-        onAuthStateChanged(auth,(currentUser)=>{
+        const unSubcribe = onAuthStateChanged(auth,(currentUser)=>{
             if(currentUser){
                 setUser(currentUser)
             }
         })
+        return()=>{
+            unSubcribe()
+        }
     },[])
 
     // context value
@@ -43,6 +46,7 @@ const AuthProvider = ({children}) => {
         userCreate,
         userSignIn,
         user,
+        setUser,
         logout
     }
     return (
