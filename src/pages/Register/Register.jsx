@@ -20,7 +20,7 @@ const Register = () => {
             toast.success("user created successfully!")
             navigate("/")
         })
-        .catch((error)=> toast.error(error.message))
+        .catch((error)=> toast.error(error.code.split('/').join(" ")))
     }
     return (
         <div className="py-6 px-3">

@@ -30,7 +30,7 @@ const Navbar = () => {
                 }
             </div>
             {
-                user  ? <button onClick={signOut} className="py-1 px-4 bg-[#403f3f] rounded-sm text-white font-medium leading-[30px]">Logout</button> :<Link to="/login"><button className="py-1 px-4 bg-[#403f3f] rounded-sm text-white font-medium leading-[30px]">Login</button></Link>
+                user.email  ? <button onClick={signOut} className="py-1 px-4 bg-[#403f3f] rounded-sm text-white font-medium leading-[30px]">Logout</button> :<Link to="/login"><button className="py-1 px-4 bg-[#403f3f] rounded-sm text-white font-medium leading-[30px]">Login</button></Link>
             }
             </div>
         </div>

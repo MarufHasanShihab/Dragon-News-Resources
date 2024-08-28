@@ -16,7 +16,7 @@ const Login = () => {
       toast.success("user login successfully!")
       navigate(location?.state ? location.state : "/")
     })
-    .catch(error => toast.error(error.message))
+    .catch(error => toast.error(error.code.split('/').join(" ")))
   }
   return (
     <div className="py-6 px-3">
