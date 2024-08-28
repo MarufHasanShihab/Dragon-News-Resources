@@ -3,9 +3,20 @@ import qZone1 from "../../assets/qZone1.png"
 import qZone2 from "../../assets/qZone2.png"
 import qZone3 from "../../assets/qZone3.png"
 import bg from "../../assets/bg.png"
+import useAuth from "../../hooks/useAuth";
 
 /* eslint-disable react/no-unknown-property */
 const RightNav = () => {
+  const {googleLogin} = useAuth()
+  // social login
+  const socialLogin = (media)=>{
+    if(media === "google"){
+      googleLogin()
+    .then(response => console.log(response.user))
+    .catch(error => console.log(error.message))
+    }
+    
+  }
   return (
     <div>
       {/* Login With */}
@@ -15,6 +26,7 @@ const RightNav = () => {
        <div  className="py-6">
        <button
           type="button"
+          onClick={()=>socialLogin("google")}
           className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2"
         >
           <svg

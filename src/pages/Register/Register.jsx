@@ -3,29 +3,52 @@ import Navbar from "../../components/Navbar/Navbar";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
-const Login = () => {
-  const {userSignIn} = useAuth()
-  const navigate = useNavigate()
-  const login = e =>{
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    userSignIn(email, password)
-    .then(()=>{
-      toast.success("user login successfully!")
-      navigate("/")
-    })
-    .catch(error => toast.error(error.message))
-  }
-  return (
-    <div className="py-6 px-3">
+
+const Register = () => {
+    const {userCreate} = useAuth()
+    const navigate = useNavigate()
+    const register = (e)=>{
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        // password validation
+        if(password.length < 6){
+            return toast.error("password must be at least 6 characters")
+        }
+        userCreate(email, password)
+        .then(()=> {
+            toast.success("user created successfully!")
+            navigate("/")
+        })
+        .catch((error)=> toast.error(error.message))
+    }
+    return (
+        <div className="py-6 px-3">
         <Navbar/>
       <div className="container px-4 mx-auto">
         <div className="max-w-lg mx-auto">
           <div className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-extrabold">Sign in</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold">Register</h2>
           </div>
-          <form onSubmit={login}>
+          <form onSubmit={register}>
+            <div className="mb-6">
+              <label className="block mb-2 font-extrabold">Your Name</label>
+              <input
+                className="inline-block w-full p-4 leading-6 text-lg font-extrabold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded"
+                type="text"
+                name="name"
+                placeholder="your name"
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block mb-2 font-extrabold">Photo Url</label>
+              <input
+                className="inline-block w-full p-4 leading-6 text-lg font-extrabold placeholder-indigo-900 bg-white shadow border-2 border-indigo-900 rounded"
+                type="text"
+                name="photo"
+                placeholder="photo url"
+              />
+            </div>
             <div className="mb-6">
               <label className="block mb-2 font-extrabold">Email</label>
               <input
@@ -64,16 +87,16 @@ const Login = () => {
               Sign in
             </button>
             <p className="text-center font-extrabold">
-              Don&rsquo;t have an account?{" "}
-              <Link to="/register" className="text-red-500 hover:underline" >
-                Sign up
+            Already have an account?{" "}
+              <Link to="/login" className="text-red-500 hover:underline" >
+              Login here
               </Link>
             </p>
           </form>
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default Login;
+export default Register;
